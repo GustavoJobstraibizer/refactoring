@@ -9,14 +9,13 @@ function statement(invoice, plays) {
       perf.audience
     } seats)\n`;
   }
-  let totalAmount = appleSauce();
 
-  result += `Amount owned is ${usd(totalAmount / 100)}\n`;
+  result += `Amount owned is ${usd(totalAmount() / 100)}\n`;
   result += `You earned ${totalVolumeCredits(invoice)} credits\n`;
   return result;
 }
 
-function appleSauce() {
+function totalAmount() {
   let totalAmount = 0;
   for (let perf of invoices.performances) {
     totalAmount += amountFor(perf);
