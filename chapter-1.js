@@ -1,5 +1,8 @@
+const plays = require("./plays.json");
+const invoices = require("./invoices.json");
+
 function statement(invoice, plays) {
-  let totalAmout = 0;
+  let totalAmount = 0;
   let volumeCredits = 0;
   let result = `Statement for ${invoice.customer}\n`;
   const format = new Intl.NumberFormat("en-US", {
@@ -36,13 +39,15 @@ function statement(invoice, plays) {
     if ("comedy" == play.type) volumeCredits += Math.floor(perf.audience / 5);
 
     // exibe a linha para esta requisição
-    result += `  ${play.name}: ${format(totalAmout / 100)} (${
+    result += `  ${play.name}: ${format(thisAmount / 100)} (${
       perf.audience
     } seats)\n`;
-    thisAmount += thisAmount;
+    totalAmount += thisAmount;
   }
 
-  result += `Amount owned is ${format(totalAmout / 100)}\n`;
+  result += `Amount owned is ${format(totalAmount / 100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
 }
+
+console.log(statement(invoices, plays));
