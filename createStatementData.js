@@ -1,11 +1,4 @@
-const plays = require("./plays.json");
-const invoices = require("./invoices.json");
-
-function statement(invoice, plays) {
-  return renderPlainText(createStatementData(invoice, plays));
-}
-
-function createStatementData(invoice, plays) {
+export default function createStatementData(invoice, plays) {
   const statementData = {};
   statementData.customer = invoice.customer;
   statementData.performances = invoice.performances.map(enrichPerformance);
@@ -61,26 +54,3 @@ function createStatementData(invoice, plays) {
 
   return statementData;
 }
-
-function renderPlainText(data, plays) {
-  let result = `Statement for ${data.customer}\n`;
-  for (let perf of data.performances) {
-    result += `  ${perf.play.name}: ${usd(perf.amount)} (${
-      perf.audience
-    } seats)\n`;
-  }
-
-  result += `Amount owned is ${usd(data.totalAmount)}\n`;
-  result += `You earned ${data.totalVolumeCredits} credits\n`;
-  return result;
-
-  function usd(aNumber) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-    }).format(aNumber);
-  }
-}
-
-console.log(statement(invoices, plays));

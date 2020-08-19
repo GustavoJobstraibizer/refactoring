@@ -1,0 +1,21 @@
+{
+  "name": "refactoring",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "statement.js",
+  "scripts": {
+    "start": "node --experimental-json-modules statement.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoJobstraibizer/refactoring.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoJobstraibizer/refactoring/issues"
+  },
+  "homepage": "https://github.com/GustavoJobstraibizer/refactoring#readme"
+}
